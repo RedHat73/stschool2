@@ -1,0 +1,1 @@
+/home/ju/public_html/sd_departments/var/langs/ru/addons/sd_departments.po
