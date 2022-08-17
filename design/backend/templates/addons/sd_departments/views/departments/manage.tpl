@@ -115,6 +115,21 @@
 
 {include file="common/pagination.tpl" div_id="pagination_contents_departments"}
 
+{capture name="buttons"}
+    {capture name="tools_list"}
+        <li><a data-ca-confirm-text="{__("delete")}" 
+                class="cm-process-items cm-submit cm-confirm"
+                data-ca-target-form="departments_form" 
+                data-ca-dispatch="dispatch[departments.m_delete]"
+                Method = "POST">
+            {__("delete")}
+            </a></li>
+    {/capture}
+    <div class="hidden-tools">
+        {dropdown content=$smarty.capture.tools_list}
+    </div>
+{/capture}
+
 {capture name="adv_buttons"}
     {include file="common/tools.tpl" tool_href="departments.add" prefix="top" hide_tools="true" title=__("add_department") icon="icon-plus"}
 {/capture}
