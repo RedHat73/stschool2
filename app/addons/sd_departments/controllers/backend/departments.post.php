@@ -52,6 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'departments.manage',
             ];
         }
+    } elseif ($mode == 'm_delete') {
+        foreach ($_REQUEST['department_ids'] as $v) 
+        {
+            fn_delete_department_by_id($v);
+        }
+        return array(CONTROLLER_STATUS_REDIRECT, 'departments.manage');
     }
 }
 
