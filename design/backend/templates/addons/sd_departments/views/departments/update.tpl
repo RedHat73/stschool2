@@ -115,4 +115,4 @@
     adv_buttons=$smarty.capture.adv_buttons 
     select_languages=false}
 
-{** banner section **}
+{** department section **}
