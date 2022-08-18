@@ -30,7 +30,7 @@
         <tr>
             <td class="ty-users-search__item">
                 <ul class="ty-users-search__user-info">
-                    <li class="ty-users-search__user-name"><strong>{$user_id|fn_get_user_name}</strong></li>
+                    <li class="ty-users-search__user-name">{$user_id|fn_get_user_name}</li>
                 </ul>
             </td>
     {foreachelse}

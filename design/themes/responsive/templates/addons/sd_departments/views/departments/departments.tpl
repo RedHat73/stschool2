@@ -47,7 +47,7 @@
 
                                 <div class="ty-compact-list__title">
                                     <bdi>
-                                        <a href="{"departments.department?department_id={$department.department_id}"|fn_url}" class="product-title" title="{$department.department}">{$department.department}</a>    
+                                        <a href="{"departments.department?department_id={$department.department_id}"|fn_url}" class="product-title" title="{$department.department}"><strong>{$department.department}</strong></a>    
                                     </bdi>
                                     <div class="ty-control-group ty-sku-item cm-hidden-wrapper" id="sku_update_227">
                                         <span class="ty-control-group__item cm-reload-227" id="{$department.user_id}">{$department.user_id|fn_get_user_name}</span>
