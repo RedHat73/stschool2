@@ -15,3 +15,35 @@ msgstr "Allows you to add departments."
 msgctxt "SettingsSections::sd_departments.departments"
 msgid "Departments"
 msgstr "Departments"
+
+msgctxt "Languages::department"
+msgid "Department"
+msgstr "Department"
+
+msgctxt "Languages::departments"
+msgid "Departments"
+msgstr "Departmens"
+
+msgctxt "Languages::add_department"
+msgid "Add department"
+msgstr "Add department"
+
+msgctxt "Languages::departments.new_department"
+msgid "New department"
+msgstr "New department"
+
+msgctxt "Languages::departments.change_department"
+msgid "Change department"
+msgstr "Change department"
+
+msgctxt "Languages::employees"
+msgid "Employees"
+msgstr "Employees"
+
+msgctxt "Languages::supervisor"
+msgid "Supervisor"
+msgstr "Supervisor"
+
+msgctxt "Languages::text_no_employees"
+msgid "No employees"
+msgstr "No employees"

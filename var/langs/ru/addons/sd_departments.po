@@ -23,3 +23,35 @@ msgstr "Позволяет добавлять отделы."
 msgctxt "SettingsSections::sd_departments.departments"
 msgid "Departments"
 msgstr "Отделы"
+
+msgctxt "Languages::department"
+msgid "Department"
+msgstr "Отдел"
+
+msgctxt "Languages::departments"
+msgid "Departments"
+msgstr "Отделы"
+
+msgctxt "Languages::add_department"
+msgid "Add department"
+msgstr "Добавить отдел"
+
+msgctxt "Languages::departments.new_department"
+msgid "New department"
+msgstr "Новый отдел"
+
+msgctxt "Languages::departments.change_department"
+msgid "Change department"
+msgstr "Изменить отдел"
+
+msgctxt "Languages::employees"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "Languages::supervisor"
+msgid "Supervisor"
+msgstr "Руководитель"
+
+msgctxt "Languages::text_no_employees"
+msgid "No employees"
+msgstr "Нет сотрудников"
