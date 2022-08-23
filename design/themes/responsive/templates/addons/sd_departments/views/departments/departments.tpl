@@ -1,7 +1,6 @@
 {if $departments}
 
     {script src="js/tygh/exceptions.js"}
-    
 
     {if !$no_pagination}
         {include file="common/pagination.tpl"}
@@ -44,7 +43,6 @@
                                         }
                                     </a>
                                 </div>
-
                                 <div class="ty-compact-list__title">
                                     <bdi>
                                         <a href="{"departments.department?department_id={$department.department_id}"|fn_url}" class="product-title" title="{$department.department}"><strong>{$department.department}</strong></a>    
@@ -60,11 +58,9 @@
             {/foreach}
         {/strip}
     </div>
-
     {if !$no_pagination}
         {include file="common/pagination.tpl"}
     {/if}
-
 {/if}
 
 {capture name="mainbox_title"}{$title}{/capture}
