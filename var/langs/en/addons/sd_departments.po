@@ -1,1 +1,17 @@
-/home/ju/public_html/sd_departments/var/langs/en/addons/sd_departments.po
+msgid ""
+msgstr "Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: English\n"
+"Language: en_US"
+
+msgctxt "Addons::name::sd_departments"
+msgid "Simtech Development: Departments"
+msgstr "Simtech Development: Departments"
+
+msgctxt "Addons::description::sd_departments"
+msgid "Allows you to add departments."
+msgstr "Allows you to add departments."
+
+msgctxt "SettingsSections::sd_departments.departments"
+msgid "Departments"
+msgstr "Departments"
