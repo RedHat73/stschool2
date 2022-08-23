@@ -6,7 +6,7 @@ use Tygh\Tygh;
 defined('BOOTSTRAP') or die('Access denied');
 $auth = & Tygh::$app['session']['auth'];
 
-if ($mode == 'departments'){
+if ($mode === 'departments'){
     Tygh::$app['session']['continue_url'] = "departments.departments";
 
     $params = $_REQUEST;
@@ -23,7 +23,7 @@ if ($mode == 'departments'){
 
     list($departments, $search) = fn_get_departments($params, Registry::get('settings.Appearance.products_per_page'), CART_LANGUAGE);
     if (isset($search['page']) && ($search['page'] > 1) && empty($departments)) {
-        return array(CONTROLLER_STATUS_NO_PAGE);
+        return [CONTROLLER_STATUS_NO_PAGE];
     }
 
     Tygh::$app['view']->assign([
@@ -36,7 +36,6 @@ if ($mode == 'departments'){
     $department_data = [];
     $department_id = !empty($_REQUEST['department_id']) ? $_REQUEST['department_id'] : 0;
     $department_data = fn_get_department_data($department_id, CART_LANGUAGE);
-    // fn_print_die($department_data);
 
     if (empty($department_data)) {
         return [CONTROLLER_STATUS_NO_PAGE];
