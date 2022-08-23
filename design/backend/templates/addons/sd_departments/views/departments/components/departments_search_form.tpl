@@ -12,7 +12,7 @@
         <input type="hidden" name="redirect_url" value="{$smarty.request.redirect_url}" />
     {/if}
 
-    {if $selected_section != ""}
+    {if $selected_section !== ""}
         <input type="hidden" id="selected_section" name="selected_section" value="{$selected_section}" />
     {/if}
 

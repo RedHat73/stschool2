@@ -4,8 +4,6 @@
     {assign var="id" value=0}
 {/if}
 
-
-
 {** departments section **}
 
 {capture name="mainbox"}
@@ -16,14 +14,12 @@
 {capture name="tabsbox"}
 
     <div id="content_general">
-
         <div class="control-group">
             <label for="elm_department_name" class="control-label cm-required">{__("name")}</label>
             <div class="controls">
                 <input type="text" name="department_data[department]" id="elm_department_name" value="{$department_data.department}" size="25" class="input-large" />
             </div>
         </div>
-
         <div class="control-group" id="department_data[department]">
             <label class="control-label">{__("image")}</label>
             <div class="controls">
@@ -37,23 +33,19 @@
                 }
             </div>
         </div>
-
-        <div class="control-group id="department_text">
+        <div class="control-group" id="department_text">
             <label class="control-label" for="elm_department_description">{__("description")}:</label>
             <div class="controls">
                 <textarea id="elm_department_description" name="department_data[description]" cols="35" rows="8" class="cm-wysiwyg input-large">{$department_data.description}</textarea>
             </div>
         </div>
-
         <div class="control-group">
-            <label class="control-label " for="elm_department_timestamp_{$id}">{__("creation_date")}</label>
+            <label class="control-label" for="elm_department_timestamp_{$id}">{__("creation_date")}</label>
             <div class="controls">
                 {include file="common/calendar.tpl" date_id="elm_department_timestamp_`$id`" date_name="department_data[timestamp]" date_val=$department_data.timestamp|default:$smarty.const.TIME start_year=$settings.Company.company_start_year}
             </div>
         </div>
-
         {include file="common/select_status.tpl" input_name="department_data[status]" id="elm_department_status" obj_id=$id obj=$department_data hidden=true}
-
         <div class="control-group">
             <label class="control-label">{__("users")}</label>
             <div class="controls">
@@ -71,7 +63,6 @@
                 }
             </div>
         </div>
-  
         {include 
             file="views/products/components/picker/picker.tpl"
             file="pickers/users/picker.tpl"
@@ -85,11 +76,9 @@
             multiple=true
             select_group_class="btn-toolbar"
         }
-    <!--content_general--></div>
-
+    </div>
 {/capture}
 {include file="common/tabsbox.tpl" content=$smarty.capture.tabsbox active_tab=$smarty.request.selected_section track=true}
-
 {capture name="buttons"}
     {if !$id}
         {include file="buttons/save_cancel.tpl" but_role="submit-link" but_target_form="departments_form" but_name="dispatch[departments.update]"}
@@ -105,14 +94,11 @@
     {include file="common/tools.tpl" tool_href="departments.add" prefix="top" hide_tools="true" title=__("add_department") icon="icon-plus"}
 {/capture}
 </form>
-
 {/capture}
-
 {include file="common/mainbox.tpl"
     title=($id) ? __("departments.change_department") : __("departments.new_department")
     content=$smarty.capture.mainbox
     buttons=$smarty.capture.buttons
     adv_buttons=$smarty.capture.adv_buttons 
     select_languages=false}
-
 {** department section **}

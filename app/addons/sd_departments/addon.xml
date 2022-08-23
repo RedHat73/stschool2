@@ -51,5 +51,6 @@
         <item for="uninstall">DROP TABLE IF EXISTS ?:department_descriptions;</item>
         <item for="uninstall">DROP TABLE IF EXISTS ?:department_links;</item>
         <item for="uninstall">DROP TABLE IF EXISTS ?:department_images;</item>
+        <item for="uninstall">DELETE FROM ?:images_links WHERE object_type='department';</item>
     </queries>
 </addon>

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
     $suffix = '';
 
-    if ($mode == 'update') {
+    if ($mode === 'update') {
         $department_id = isset ($_REQUEST ['department_id']) ? $_REQUEST ['department_id'] : null;
         $data = isset ($_REQUEST['department_data']) ? $_REQUEST['department_data'] : [];
         $department_id = fn_update_department($data, $department_id, $lang_code = CART_LANGUAGE);
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'departments.update',
             ];
         }
-    } elseif ($mode == 'delete') {
+    } elseif ($mode === 'delete') {
         if (isset($_REQUEST['department_id'])) {
             fn_delete_department_by_id($_REQUEST['department_id']);
             return [
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'departments.manage',
             ];
         }
-    } elseif ($mode == 'm_delete') {
+    } elseif ($mode === 'm_delete') {
         foreach ($_REQUEST['department_ids'] as $v) 
         {
             fn_delete_department_by_id($v);
