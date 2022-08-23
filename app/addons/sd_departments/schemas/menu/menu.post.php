@@ -5,5 +5,3 @@ $schema['central']['customers']['items']['sd_departments.departments'] = [
 ];
 
 return $schema;
-
-?>
