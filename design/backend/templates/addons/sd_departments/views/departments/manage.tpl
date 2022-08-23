@@ -16,89 +16,88 @@
     {capture name="departments_table"}
         <div class="table-responsive-wrapper longtap-selection">
             <table width="100%" class="table table-middle table--relative table-responsive" data-ca-main-content>
-            <thead
-            data-ca-bulkedit-default-object="true" 
-            data-target=".departments-table" 
-            data-ca-bulkedit-component="defaultObject""
-            >
-            <tr class="left mobile-hide table__check-items-column table__check-items-column{if !$has_permission_departments} table__check-items-column--disabled{/if}">
-                <th width="6%" class="left mobile-hide">
-                    {include file="common/check_items.tpl" 
-                    is_check_disabled=!$has_permission 
-                    check_statuses=($has_permission) ? $department_statuses : '' 
-                    }
-                    <input type="checkbox"
-                        class="bulkedit-toggler hide"
-                        data-ca-bulkedit-disable="[data-ca-bulkedit-default-object=true]"
-                        data-ca-bulkedit-enable="[data-ca-bulkedit-expanded-object=true]"
-                    />
-                </th>
-                <th width="16%" class="table__column-without-title">    </th>
-                <th><a class="cm-ajax" href="{"`$c_url`&sort_by=name&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("department")}{if $search.sort_by === "name"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
-                <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=timestamp&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("creation_date")}{if $search.sort_by === "timestamp"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
-                <th width="9%" class="mobile-hide">&nbsp;</th>
-                <th width="10%" class="right"><a class="cm-ajax" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("status")}{if $search.sort_by === "status"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
-            </tr>
-            </thead>
-            {foreach from=$departments item=department}
-            <tr class="cm-row-status-{$department.status|lower} cm-longtap-target"
-                {if $has_permission}
-                    data-ca-longtap-action="setCheckBox"
-                    data-ca-longtap-target="input.cm-item"
-                    data-ca-id="{$department.department_id}"
-                {/if}
-            >
-                {$allow_save=$department|fn_allow_save_object:"departments"}
-
-                {if $allow_save}
-                    {$no_hide_input="cm-no-hide-input"}
-                {else}
-                    {$no_hide_input=""}
-                {/if}
-
-                <td width="6%" class="left mobile-hide">
-                    <input 
-                        type="checkbox" 
-                        name="department_ids[]" 
-                        value="{$department.department_id}" 
-                        class="cm-item {$no_hide_input} cm-item-status-{$department.status|lower} hide" 
-                    />
-                </td>
-                <td width="{$image_width + 18px}" class="departments-list__image">
-                    {include
-                        file="common/image.tpl"
-                        image=$department.main_pair.icon|default:$department.main_pair.detailed
-                        image_id=$department.main_pair.image_id
-                        image_width=$settings.Thumbnails.product_lists_thumbnail_width 
-                        image_height=$settings.Thumbnails.product_lists_thumbnail_height 
-                        href="departments.update?department_id=`$department.department_id`"|fn_url
-                        image_css_class="departments-list__image--img"
-                        link_css_class="departments-list__image--link"
-                    }
-                </td>
-                <td class="{$no_hide_input}" data-th="{__("department")}">
-                    <a class="row-status" href="{"departments.update?department_id=`$department.department_id`"|fn_url}">{$department.department}</a>
-                    {include file="views/companies/components/company_name.tpl" object=$department}
-                </td>
-                <td width="15%" data-th="{__("creation_date")}">
-                    {$department.timestamp|date_format:"`$settings.Appearance.date_format`"}
-                </td>
-                <td width="6%" class="mobile-hide">
-                    {capture name="tools_list"}
-                        <li>{btn type="list" text=__("edit") href="departments.update?department_id=`$department.department_id`"}</li>
-                    {if $allow_save}
-                        <li>{btn type="list" class="cm-confirm" text=__("delete") href="departments.delete?department_id=`$department.department_id`" method="POST"}</li>
+                <thead
+                data-ca-bulkedit-default-object="true" 
+                data-target=".departments-table" 
+                data-ca-bulkedit-component="defaultObject""
+                >
+                <tr class="left mobile-hide table__check-items-column table__check-items-column{if !$has_permission_departments} table__check-items-column--disabled{/if}">
+                    <th width="6%" class="left mobile-hide">
+                        {include file="common/check_items.tpl" 
+                        is_check_disabled=!$has_permission 
+                        check_statuses=($has_permission) ? $department_statuses : '' 
+                        }
+                        <input type="checkbox"
+                            class="bulkedit-toggler hide"
+                            data-ca-bulkedit-disable="[data-ca-bulkedit-default-object=true]"
+                            data-ca-bulkedit-enable="[data-ca-bulkedit-expanded-object=true]"
+                        />
+                    </th>
+                    <th width="16%" class="table__column-without-title"></th>
+                    <th><a class="cm-ajax" href="{"`$c_url`&sort_by=name&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("department")}{if $search.sort_by === "name"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
+                    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=timestamp&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("creation_date")}{if $search.sort_by === "timestamp"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
+                    <th width="9%" class="mobile-hide">&nbsp;</th>
+                    <th width="10%" class="right"><a class="cm-ajax" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("status")}{if $search.sort_by === "status"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
+                </tr>
+                </thead>
+                {foreach from=$departments item=department}
+                <tr class="cm-row-status-{$department.status|lower} cm-longtap-target"
+                    {if $has_permission}
+                        data-ca-longtap-action="setCheckBox"
+                        data-ca-longtap-target="input.cm-item"
+                        data-ca-id="{$department.department_id}"
                     {/if}
-                    {/capture}
-                    <div class="hidden-tools">
-                        {dropdown content=$smarty.capture.tools_list}
-                    </div>
-                </td>
-                <td width="10%" class="right" data-th="{__("status")}">
-                    {include file="common/select_popup.tpl" id=$department.department_id status=$department.status hidden=true object_id_name="department_id" table="departments" popup_additional_class="`$no_hide_input` dropleft"}
-                </td>
-            </tr>
-            {/foreach}
+                >
+                    {$allow_save=$department|fn_allow_save_object:"departments"}
+
+                    {if $allow_save}
+                        {$no_hide_input="cm-no-hide-input"}
+                    {else}
+                        {$no_hide_input=""}
+                    {/if}
+
+                    <td width="6%" class="left mobile-hide">
+                        <input 
+                            type="checkbox" 
+                            name="department_ids[]" 
+                            value="{$department.department_id}" 
+                            class="cm-item {$no_hide_input} cm-item-status-{$department.status|lower} hide" 
+                        />
+                    </td>
+                    <td width="{$image_width + 18px}" class="departments-list__image">
+                        {include
+                            file="common/image.tpl"
+                            image=$department.main_pair.icon|default:$department.main_pair.detailed
+                            image_id=$department.main_pair.image_id
+                            image_width=$settings.Thumbnails.product_lists_thumbnail_width 
+                            image_height=$settings.Thumbnails.product_lists_thumbnail_height 
+                            href="departments.update?department_id=`$department.department_id`"|fn_url
+                            image_css_class="departments-list__image--img"
+                            link_css_class="departments-list__image--link"
+                        }
+                    </td>
+                    <td class="{$no_hide_input}" data-th="{__("department")}">
+                        <a class="row-status" href="{"departments.update?department_id=`$department.department_id`"|fn_url}">{$department.department}</a>
+                    </td>
+                    <td width="15%" data-th="{__("creation_date")}">
+                        {$department.timestamp|date_format:"`$settings.Appearance.date_format`"}
+                    </td>
+                    <td width="6%" class="mobile-hide">
+                        {capture name="tools_list"}
+                            <li>{btn type="list" text=__("edit") href="departments.update?department_id=`$department.department_id`"}</li>
+                        {if $allow_save}
+                            <li>{btn type="list" class="cm-confirm" text=__("delete") href="departments.delete?department_id=`$department.department_id`" method="POST"}</li>
+                        {/if}
+                        {/capture}
+                        <div class="hidden-tools">
+                            {dropdown content=$smarty.capture.tools_list}
+                        </div>
+                    </td>
+                    <td width="10%" class="right" data-th="{__("status")}">
+                        {include file="common/select_popup.tpl" id=$department.department_id status=$department.status hidden=true object_id_name="department_id" table="departments" popup_additional_class="`$no_hide_input` dropleft"}
+                    </td>
+                </tr>
+                {/foreach}
             </table>
         </div>
     {/capture}
@@ -142,10 +141,8 @@
     {include file="addons/sd_departments/views/departments/components/departments_search_form.tpl" dispatch="departments.manage"}
 {/capture}
 
-
-    {$page_title = __("departments")}
-    {$select_languages = false}
-
+{$page_title = __("departments")}
+{$select_languages = false}
 
 {include file="common/mainbox.tpl" 
     title=$page_title 

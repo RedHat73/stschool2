@@ -2,6 +2,14 @@
 
 use Tygh\Languages\Languages;
 
+/**
+ * Get specific department data
+ *
+ * @param int   $department_id Department ID
+ * @param str   $lang_code     Language code
+ *
+ * @return array Departments data
+ */
 function fn_get_department_data($department_id = null, $lang_code = CART_LANGUAGE)
 {
     $departments = [];
@@ -18,6 +26,15 @@ function fn_get_department_data($department_id = null, $lang_code = CART_LANGUAG
     return $departments;
 }
 
+/**
+ * Gets departments list by search params
+ *
+ * @param array  $params         Department search params
+ * @param string $lang_code      2 letters language code
+ * @param int    $items_per_page Items per page
+ *
+ * @return array Departments list and Search params
+ */
 function fn_get_departments($params = [], $items_per_page = 10, $lang_code = CART_LANGUAGE)
 {
     $default_params = [
@@ -113,6 +130,15 @@ function fn_get_departments($params = [], $items_per_page = 10, $lang_code = CAR
     ];
 }
 
+/**
+ * Get updated department data
+ *
+ * @param array $params        Department data params
+ * @param int   $department_id Department ID
+ * @param str   $lang_code     Language code
+ *
+ * @return int  $department_id Department ID
+ */
 function fn_update_department($data, $department_id, $lang_code = CART_LANGUAGE)
 {
     if (!empty($data['timestamp'])) {
@@ -174,11 +200,21 @@ function fn_update_department($data, $department_id, $lang_code = CART_LANGUAGE)
     return $department_id;
 }
 
+/**
+ * Removes the association of a department with the selected users
+ *
+ * @param int $department_id Department identificator
+ */
 function fn_department_delete_links($department_id)
 {
     db_query("DELETE FROM ?:department_links WHERE department_id = ?i", $department_id);
 }
 
+/**
+ * Adds a department link to the selected users
+ *
+ * @param int $department_id Department identificator
+ */
 function fn_department_add_links($department_id, $user_ids)
 {
     if (!empty($user_ids['0'])) {
@@ -192,11 +228,21 @@ function fn_department_add_links($department_id, $user_ids)
     }
 }
 
+/**
+ * Gets data about the connection of the department with the selected users
+ *
+ * @param int $department_id Department identificator
+ */
 function fn_department_get_links($department_id)
 {
     return isset($department_id) ? db_get_fields('SELECT employee_id from ?:department_links WHERE department_id = ?i', $department_id) : [];
 }
 
+/**
+ * Checks of request for need to update the department image.
+ *
+ * @return bool
+ */
 function fn_departments_need_image_update()
 { 
         if(empty($_REQUEST['department_image_data']['0']['pair_id']) && is_array($_REQUEST['file_department_image_icon'])){ 
@@ -206,6 +252,12 @@ function fn_departments_need_image_update()
     return true;
 }
 
+
+/**
+ * Deletes the image of the department
+ *
+ * @param int $department_id Department identificator
+ */
 function fn_department_image_delete($department_id)
 {       
         $department_id_image = fn_get_department_id_image($department_id);
@@ -214,6 +266,14 @@ function fn_department_image_delete($department_id)
         fn_delete_image_pair ($department_id_image, 'department');
 }
 
+
+/**
+ * Gets the image of the department
+ *
+ * @param int $department_id Department identificator
+ * 
+ * @return int $department_id Department identificator
+ */
 function fn_get_department_id_image($department_id)
 {
     $department_id = db_get_field("SELECT department_id FROM ?:department_images WHERE department_id = ?i", $department_id);
@@ -222,6 +282,13 @@ function fn_get_department_id_image($department_id)
     return $department_id;
 }
 
+
+/**
+ * Sets the link of the department with the image
+ *
+ * @param int $department_id Department identificator
+ * @param array $pair_data   Image data
+ */
 function fn_departments_image_all_links($department_id, $pair_data)
 {
     if (isset($pair_data)) {
@@ -231,6 +298,11 @@ function fn_departments_image_all_links($department_id, $pair_data)
     }
 }
 
+/**
+ * Deletes department and all related data
+ *
+ * @param int $department_id Department identificator
+ */
 function fn_delete_department_by_id($department_id)
 {
     if (!empty($department_id)) {
