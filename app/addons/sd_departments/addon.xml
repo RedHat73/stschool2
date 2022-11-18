@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>sd_departments</id>
+    <version>4.15.1.0</version>
+    <default_language>ru</default_language>
+    <priority>1200</priority>
+    <position>10</position>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <queries>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS cscart_departments (
+                department_id INT(11) unsigned NOT NULL auto_increment,
+                status VARCHAR(1) NOT NULL DEFAULT 'A',
+                timestamp INT(11) unsigned NOT NULL DEFAULT '0',
+                upd_timestamp INT(11) unsigned NOT NULL DEFAULT '0',
+                user_id INT(11) unsigned NOT NULL DEFAULT '0',
+                KEY (user_id),
+                PRIMARY KEY (department_id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        </item>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS cscart_department_descriptions (
+                department_id INT(11) unsigned NOT NULL DEFAULT '0',
+                lang_code CHAR(2) NOT NULL DEFAULT '',
+                department VARCHAR(255) NOT NULL DEFAULT '',
+                description TEXT NULL,
+                PRIMARY KEY (department_id, lang_code)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        </item>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS cscart_department_links (
+                department_id INT(11) unsigned NOT NULL DEFAULT '0',
+                employee_id INT(11) unsigned NOT NULL DEFAULT '0',
+                KEY (employee_id),
+                KEY (department_id),
+                PRIMARY KEY (department_id, employee_id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        </item>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS cscart_department_images (
+                department_image_id MEDIUMINT(8) unsigned NOT NULL auto_increment,
+                department_id MEDIUMINT(8) unsigned NOT NULL DEFAULT '0',
+                lang_code CHAR(2) NOT NULL DEFAULT '',
+                KEY (department_id),
+                KEY (lang_code),
+                PRIMARY KEY (department_image_id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:departments;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:department_descriptions;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:department_links;</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:department_images;</item>
+    </queries>
+</addon>
